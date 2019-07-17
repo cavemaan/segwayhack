@@ -132,6 +132,20 @@ public class ImageUtils
         return bimage;
     }
 
+    public static byte[] bgrToRgb(byte[] brgImage) {
+        byte[] rgbImage = new byte[brgImage.length];
+        for (int i = 0; i < brgImage.length; i += 3) {
+            rgbImage[i] = brgImage[i + 2];
+            rgbImage[i + 1] = brgImage[i + 1];
+            rgbImage[i + 2] = brgImage[i];
+        }
+        return rgbImage;
+    }
+
+    public static byte[] toBytes(BufferedImage bufferedImage) {
+        return ((DataBufferByte) bufferedImage.getRaster().getDataBuffer()).getData();
+    }
+
     public static final Color aliceblue = new Color(240, 248, 255);
     public static final Color antiquewhite = new Color(250, 235, 215);
     public static final Color aqua = new Color(0, 255, 255);
